@@ -1,27 +1,10 @@
-# HR Data Analytics (Pure Python)
+# HR Data Cleaning & Analysis (Pure Python)
 
-A high-performance data processing tool built for HR departments, developed **without external libraries** (no Pandas, no NumPy) to demonstrate mastery of core Python logic and algorithmic efficiency.
+This project was built for my programming module. The goal was to create a data analysis tool for HR records using **only pure Python**—no Pandas, no NumPy, and no external libraries. 
 
-## 🚀 Key Features
-* **Manual CSV Engine:** Custom-built parser to handle raw data ingestion and file I/O.
-* **Automated Cleaning:** Logic for handling missing values, duplicates, and data normalization.
-* **HR Analytics:** Modular functions for calculating turnover, salary distributions, and department metrics.
-* **Zero Dependencies:** Runs on any standard Python 3.x environment.
+The assignment was designed to test my ability to solve data problems and implement logic from scratch rather than relying on pre-built tools.
 
-## 🛠️ Technical Skills Demonstrated
-* **Data Structures:** Advanced use of Dictionaries and Lists for optimized data retrieval.
-* **Algorithmic Thinking:** Implementation of sorting and aggregation logic from scratch.
-* **Clean Code:** Modular, PEP 8 compliant function architecture.
-## 📂 Project Structure
-* `main.py`: The entry point for executing analysis workflows.
-* `data_processor.py`: Contains functions for cleaning and parsing raw data.
-* `analytics.py`: Contains the logic for generating HR metrics.
-* `data/`: Directory containing the source `.csv` or `.txt` HR records.
-
----
-
-## 💻 Usage
-Since this project uses no external dependencies, simply run the main script using any standard Python 3.x interpreter:
-
-```bash
-python main.py
+## What it does
+* **Custom Data Parsing:** Since I couldn't use a CSV library, I wrote functions to open, read, and split raw data files manually.
+* **Data Cleaning:** The code identifies and handles missing values, removes duplicates, and fixes formatting issues in the HR records.
+* **Analysis Functions:** I implemented logic to calculate key metrics like average salaries, department headcounts, and employee distributions using standard Python lists and dictionaries.
