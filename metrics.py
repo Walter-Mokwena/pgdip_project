@@ -1,6 +1,9 @@
 import math
 from datetime import datetime
 from helper import read_hr_data
+from collections import Counter
+
+data = read_hr_data('cleaned_dataset.csv')
 
 
 def get_unique_departments(data):
@@ -17,7 +20,19 @@ def get_unique_departments(data):
         >>> get_unique_departments(data)
         {'engineering', 'sales', 'hr', 'marketing', 'product'}
     """
-    pass
+    departments = set() #to solve this question we use a set because it only takes in unique keys, this allows us to only have a set with unique departments
+    
+    #in each row the department is in the second column so we use a list to iterate through each row and add the value at index 1 of each row to the set
+    for row in data: 
+        departments.add(row[1])
+
+
+    return departments
+
+
+############################################################################################33
+######################################################################################################3
+
 
 
 def get_gender_distribution(data):
@@ -41,8 +56,30 @@ def get_gender_distribution(data):
             ...
         }
     """
-    pass
-            
+    #first step is to get the unique departments
+    list_of_departments = list(get_unique_departments(data))
+    
+    #to solve this problem we use dictionary and list comprehension
+    #we first create a dictionary that will have department as key and a list with all the genders in that deparment
+    #this will allow us to count each gender in the department
+    #we then use dictionary comprehension to create the final dictionary with department as key and the gender distribution in the department as values
+    department_dictionary = {department: [row[2] for row in data if row[1] == department]
+                             
+                             
+                             for department in list_of_departments
+
+    }
+
+    department_distribution = {departments: 
+                               
+                               {gender: round((count/len(gender_list))*100, 2) for gender, count in Counter(gender_list).items()
+
+    } 
+                               for departments, gender_list in department_dictionary.items()}
+
+    return department_distribution
+    
+get_gender_distribution(data)           
 
 
 def get_avg_age_by_department(data):
