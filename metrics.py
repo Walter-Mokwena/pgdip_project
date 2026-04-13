@@ -2,6 +2,7 @@ import math
 from datetime import datetime
 from helper import read_hr_data
 from collections import Counter
+import statistics as st
 
 data = read_hr_data('cleaned_dataset.csv')
 
@@ -98,7 +99,21 @@ def get_avg_age_by_department(data):
         >>> get_avg_age_by_department(data)
         {'engineering': 38.5, 'sales': 35.2, 'hr': 42.1, 'marketing': 33.8, 'product': 36.9}
     """
-    pass
+    #This problem is similar to the previous function we will follow the same steps
+    
+    #we first create a list with the unique department
+    departments = list(get_unique_departments(data))
+
+    #instead of using loops we will use dictionary and list comprehensions
+    average_age = {department: round(st.mean([row[3] for row in data if row[1] == department]),2) for department in departments}
+    
+    
+    return average_age
+
+
+
+#########################################################################################################
+##########################################################################################################
     
 
 
@@ -122,7 +137,14 @@ def get_retention_rate(data):
         >>> get_retention_rate(data)
         87.5
     """
-    pass
+    
+
+    #to solve this problem we again opt for list comprehensions 
+    active_employees_count = len([row[8] for row in data if row[8] == 'Active']) # create a list with all the active employees and count the number of active employees using len()
+    
+    retention_rate = round(((active_employees_count / len(data)) * 100), 2) # use the retention formular to calculate the retention rate
+    
+    return retention_rate
 
 
 def get_turnover_rate_by_department(data):
