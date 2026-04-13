@@ -193,8 +193,14 @@ def get_avg_salary_by_age_range(data, min_age, max_age):
         >>> get_avg_salary_by_age_range(data, 25, 35)
         68500.75
     """
-    pass
+    #we first create a list with all the salaries that fall within the provided range and use the statistics module to computet the average
+    
+    salaries_avg = round(st.mean([row[4] for row in data if min_age <= row[3] <= max_age]),2)
 
+    return salaries_avg
+
+
+get_avg_salary_by_age_range(data,25,50)
 def get_avg_dept_performance_by_training_range(data, min_hours, max_hours):
     """
     Return average performance rating for each department within a training hours range (inclusive).
