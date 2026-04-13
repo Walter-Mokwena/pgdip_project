@@ -165,8 +165,15 @@ def get_turnover_rate_by_department(data):
         >>> get_turnover_rate_by_department(data)
         {'engineering': 15.5, 'sales': 22.3, 'hr': 10.0, 'marketing': 18.5, 'product': 12.0}
     """
-    pass
+    #we follow the same procedure as the prevous questions that require dictionaries
+    #first we create a list of the departments using the first function
+    departments = list(get_unique_departments(data))
+    turnover_dict = {department: [row[8] for row in data if row[8] == 'Resigned' and row[1] == department] for department in departments} #creates a dictionary with departments as key and a list with all resigned employees
+    turnover_rate = {department: round((len(resined_list)/len([row[8] for row in data if row[1] == department])) * 100,2 ) for department, resined_list in turnover_dict.items()} #creates a dictionary with department as key and turnover rate as value
+    
+    return turnover_rate
 
+get_turnover_rate_by_department(data)
 
 def get_avg_salary_by_age_range(data, min_age, max_age):
     """
